@@ -1,0 +1,17 @@
+class Solution {
+List ans=new ArrayList<>();
+void inorder(TreeNode root)
+{
+if(root==null)
+return;
+inorder(root.left);
+ans.add(root.val);
+inorder(root.right);
+}
+public List getAllElements(TreeNode root1, TreeNode root2) {
+inorder(root1);
+inorder(root2);
+Collections.sort(ans);
+return ans;
+}
+}
