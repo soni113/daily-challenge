@@ -1,0 +1,42 @@
+//////using hashset
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        HashSet<Integer> set=new HashSet<>();
+        for(int i:nums)
+        {
+            if(set.contains(i))
+                set.remove(i);
+            else
+                set.add(i);
+        }
+        for(int i:set)
+        {
+            return i;
+        }
+        return -1;
+    }
+}
+
+//////
+class Solution {
+    public int singleNumber(int[] nums) {
+       HashSet<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (set.contains(num)) set.remove(num);
+            else set.add(num);
+        }
+        return set.iterator().next();
+    }
+}
+/////using xor
+class Solution {
+    public int singleNumber(int[] nums) {
+       
+        int res =  0; // any number (xor) 0  = any number
+    for(int i = 0;i<nums.length;i++)
+        
+        res = res^nums[i];
+        return res;
+    }
+}
