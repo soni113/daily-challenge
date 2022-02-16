@@ -1,0 +1,32 @@
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if(head == null) return null;
+		ListNode cur = head;
+
+		while(cur != null && cur.next != null) {
+			int tmp = cur.val;                   // Swapping between cur.val and cur.next.val
+			cur.val = cur.next.val;
+			cur.next.val = tmp;
+
+			cur = cur.next.next;              // Jump 2 steps ahead for next iteration
+		}
+		return head;
+        
+    }
+}
+///recursion
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null)
+            return head;
+        
+        ListNode smallHead = swapPairs(head.next.next);
+        
+        ListNode temp = head.next;
+        head.next = smallHead;
+        temp.next = head;
+        
+        return temp;
+        
+    }
+}
